@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xhr</title>
+</head>
+<body>
+后端返回：<br>
+<div id="content"></div>
+</body>
+</html>
+<script>
+    // 发起带参数的 POST 请求
+    var xhr = new XMLHttpRequest()
+    xhr.open('POST', 'http://localhost:8080/XHRReceiveAndReturn_war_exploded/maintain_order.json')
+    xhr.send()
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText)
+            document.getElementById("content").innerText = xhr.responseText
+        }
+    }
+</script>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="XHRReceiveAndReturn:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/XHRReceiveAndReturn_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="XHRReceiveAndReturn/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="XHRReceiveAndReturn" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,56 @@
+﻿<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+<script>
+function getMyData(){
+	var deviceId=document.getElementById("device_id").value;
+	var gpsTimeFrom=document.getElementById("gps_time_from").value;
+	var gpsTimeTo=document.getElementById("gps_time_to").value;
+	gpsTimeFrom=encodeURI(gpsTimeFrom);
+	gpsTimeTo=encodeURI(gpsTimeTo);
+	var url="/servlet_demo_war_exploded/gps_monitor_servlet_action?device_id="+deviceId+"&gps_time_from="+gpsTimeFrom+"&gps_time_to="+gpsTimeTo+"&action=get_gps_record";
+	alert("构造的URL是："+url);
+	//showWaitTip();	//显示等待动画
+	$.post(url,function(data){
+		//hideWaitTip();
+		//显示在content中
+		document.getElementById("json").value=data;
+		var json=eval("("+data+")");
+		var list=json.record_list;
+		var obj=document.getElementById("content");
+		obj.value="返回的消息是："+json.result_msg+"\r\n";
+		obj.value=obj.value+"返回的代码是："+json.result_code+"\r\n";
+		obj.value=obj.value+"返回的action是："+json.action+"\r\n";
+		obj.value=obj.value+"返回的长度是："+list.length+"\r\n";
+		var count=list.length;
+		for (var i=0;i<count;i++){
+			obj.value=obj.value+"设备ID："+list[i].device_id+"，GPS时间："+list[i].gps_time+"，接收时间："+list[i].recv_time+"，经度："+list[i].longitude+"，纬度："+list[i].latitude+"\r\n";
+		}
+	});
+}
+</script>
+请输入：
+<form action="back.jsp">
+<input type="text" id="device_id" name="device_id" value="388513070460575" />
+<input type="text" id="gps_time_from" name="gps_time_from" value="2015-09-20 00:00:00" />
+<input type="text" id="gps_time_to" name="gps_time_to" value="2015-09-20 21:03:01" />
+<input type="button" value="查询" onclick="getMyData();"/><hr>
+返回的：
+<input type="text" id="action" name="action" value="这里是action"/><br>
+<textarea id="json" name="json" style="width:100%;height:300px;">这里是原始json</textarea><br>
+<textarea id="content" name="content" style="width:100%;height:300px;">这里是解析的json</textarea>
+</form>
+
+<iframe id="ifra_head" style="filter:alpha(opacity=0);position:absolute;width:expression(this.nextSibling.offsetWidth);height:expression(this.nextSibling.offsetHeight);top:expression(this.nextSibling.offsetTop);left:expression(this.nextSibling.offsetLeft);" frameborder="0" ></iframe>
+<div  id="LoadProcess_head" style="visibility:hidden;position:absolute; left:40%; top:111px; width:280px; height:50px; z-index:1;z-index:11;"> 
+	<div align=center style="color:#000000;border:1px solid #ffffff;height:50px;padding:5px 0px 0px 0px" id="id2"><img src="wait.gif"><span id="waitTip">请稍候......</span></div>
+</div>
+<script>
+function hideWaitTip(){
+	document.all('LoadProcess_head').style.visibility ="hidden";
+	document.all('ifra_head').style.visibility = "hidden";
+}
+function showWaitTip(){
+	document.all('LoadProcess_head').style.visibility ="visible";
+	document.all('ifra_head').style.visibility = "visible";
+}
+</script>

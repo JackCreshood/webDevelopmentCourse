@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FrameDemo/FrameDemo.iml" filepath="$PROJECT_DIR$/FrameDemo/FrameDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TableDemo/TableDemo.iml" filepath="$PROJECT_DIR$/TableDemo/TableDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestDemo/TestDemo.iml" filepath="$PROJECT_DIR$/TestDemo/TestDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TomcatProject.iml" filepath="$PROJECT_DIR$/.idea/TomcatProject.iml" />
+    </modules>
+  </component>
+</project>
